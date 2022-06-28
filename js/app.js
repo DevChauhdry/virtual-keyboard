@@ -71,9 +71,6 @@ const createKeys = () => {
                     for (const key of keys) {
                         key.innerHTML = capslock ? key.innerHTML.toUpperCase() : key.innerHTML.toLowerCase()
                     }
-                    // keys.forEach(key => {
-                    // key.innerHTML = capslock ? key.innerHTML.toUpperCase() : key.innerHTML.toLowerCase()
-                    // })
                     keyElement.classList.toggle('keyboard__key--active')
                 })
 
