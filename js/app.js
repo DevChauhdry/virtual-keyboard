@@ -2,7 +2,7 @@
 const keyboard = document.createElement('div')
 const keyContainer = document.createElement('div')
 const textArea = document.querySelector('.use-keyboard-input')
-const keys = document.querySelectorAll('.keyboard__key')
+let keys = document.querySelectorAll('.keyboard__key')
 let capslock = false
 
 // main function
@@ -68,8 +68,11 @@ const createKeys = () => {
 
                 keyElement.addEventListener('click', () => {
                     capslock = !capslock
+                    keys = document.querySelectorAll('.keyboard__key')
                     for (const key of keys) {
-                        key.innerHTML = capslock ? key.innerHTML.toUpperCase() : key.innerHTML.toLowerCase()
+                        if (key.childElementCount === 0) {
+                            key.innerHTML = capslock ? key.innerHTML.toUpperCase() : key.innerHTML.toLowerCase()
+                        }
                     }
                     keyElement.classList.toggle('keyboard__key--active')
                 })
@@ -110,7 +113,7 @@ const createKeys = () => {
                 keyElement.textContent = key.toLowerCase()
 
                 keyElement.addEventListener('click', function () {
-                    textArea.value += textArea.capslock ? key.toUpperCase() : key.toLowerCase()
+                    textArea.value += capslock ? key.toUpperCase() : key.toLowerCase()
                 })
         }
 
